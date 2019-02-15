@@ -1,5 +1,6 @@
-Code for reproducing source apportionment in Martens et.al. (2019)
-*Global Biogeochemical Cycles*, 33, 2-14
+Code for reproducing source apportionment in [Martens et.al. (2019)
+*Global Biogeochemical Cycles*, 33,
+2-14](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018GB005969)
 ================
 
 ### Statistical model
@@ -21,7 +22,30 @@ isotope_data <- read_excel("Martens-2018-3.xlsx",
                            col_names = c("depth", "age", "OC", "d13C", "OC_flux", "lab", "D14C_raw", "D14C_corrected")) %>% 
   select(age, d13C, D14C = D14C_corrected)
 # End member values from Article SI tables S6-S9
-end_members <- read_csv("data/end_members.csv")
+end_members <- read_csv("end_members.csv")
+knitr::kable(end_members)
+```
+
+| Variable | Source   | Isotope |   value | SI\_table |
+| :------- | :------- | :------ | ------: | :-------- |
+| mean     | ICD      | d13C    |  \-26.3 | S7        |
+| s.d.     | ICD      | d13C    |     1.3 | S7        |
+| mean     | TS       | d13C    |  \-27.1 | S6        |
+| s.d.     | TS       | d13C    |     1.0 | S6        |
+| mean     | M\_Young | d13C    |  \-21.0 | S9        |
+| s.d.     | M\_Young | d13C    |     2.6 | S9        |
+| mean     | M\_old   | d13C    |  \-22.7 | S8        |
+| s.d.     | M\_old   | d13C    |     3.5 | S8        |
+| mean     | ICD      | D14C    | \-962.0 | S7        |
+| s.d.     | ICD      | D14C    |    61.0 | S7        |
+| mean     | TS       | D14C    | \-173.0 | S6        |
+| s.d.     | TS       | D14C    |   163.0 | S6        |
+| mean     | M\_Young | D14C    |  \-50.0 | S9        |
+| s.d.     | M\_Young | D14C    |    12.0 | S9        |
+| mean     | M\_old   | D14C    |  \-16.0 | S8        |
+| s.d.     | M\_old   | D14C    |    53.0 | S8        |
+
+``` r
 # Helper functions
 source("functions.R")
 ```
@@ -30,7 +54,7 @@ source("functions.R")
 
 ``` r
 # Parameters for MCMC
-N <- 10000000
+N <- 1000000
 thin <- 1000
 # Young part of the core
 isotopes_young <- filter(isotope_data, age < 8000)
