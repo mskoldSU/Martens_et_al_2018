@@ -12,6 +12,13 @@ See article supporting information for model details implemented in
 
 ``` r
 library(tidyverse)
+```
+
+    ## Warning: package 'tidyverse' was built under R version 3.5.2
+
+    ## Warning: package 'tibble' was built under R version 3.5.2
+
+``` r
 library(readxl)
 library(rjags)
 library(cowplot)
@@ -110,8 +117,8 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ##  [1] readxl_1.1.0    bindrcpp_0.2.2  cowplot_0.9.3   rjags_4-8      
-    ##  [5] coda_0.19-2     forcats_0.3.0   stringr_1.3.1   dplyr_0.7.8    
+    ##  [1] bindrcpp_0.2.2  cowplot_0.9.3   rjags_4-8       coda_0.19-2    
+    ##  [5] readxl_1.1.0    forcats_0.3.0   stringr_1.3.1   dplyr_0.7.8    
     ##  [9] purrr_0.2.5     readr_1.2.1     tidyr_0.8.2     tibble_2.0.1   
     ## [13] ggplot2_3.1.0   tidyverse_1.2.1
     ## 
@@ -120,11 +127,11 @@ sessionInfo()
     ##  [5] generics_0.0.2   htmltools_0.3.6  yaml_2.2.0       rlang_0.3.1     
     ##  [9] pillar_1.3.1     glue_1.3.0       withr_2.1.2      modelr_0.1.2    
     ## [13] bindr_0.1.1      plyr_1.8.4       munsell_0.5.0    gtable_0.2.0    
-    ## [17] cellranger_1.1.0 rvest_0.3.2      codetools_0.2-15 evaluate_0.12   
-    ## [21] labeling_0.3     knitr_1.20       broom_0.5.1      Rcpp_1.0.0      
+    ## [17] cellranger_1.1.0 rvest_0.3.2      evaluate_0.12    labeling_0.3    
+    ## [21] knitr_1.20       highr_0.7        broom_0.5.1      Rcpp_1.0.0      
     ## [25] scales_1.0.0     backports_1.1.2  jsonlite_1.6     hms_0.4.2       
     ## [29] digest_0.6.18    stringi_1.2.4    grid_3.5.1       cli_1.0.1       
     ## [33] tools_3.5.1      magrittr_1.5     lazyeval_0.2.1   crayon_1.3.4    
-    ## [37] pkgconfig_2.0.2  xml2_1.2.0       lubridate_1.7.4  rematch_1.0.1   
-    ## [41] assertthat_0.2.0 rmarkdown_1.11   httr_1.3.1       rstudioapi_0.8  
+    ## [37] pkgconfig_2.0.2  xml2_1.2.0       lubridate_1.7.4  assertthat_0.2.0
+    ## [41] rmarkdown_1.11   rematch_1.0.1    httr_1.3.1       rstudioapi_0.8  
     ## [45] R6_2.3.0         nlme_3.1-137     compiler_3.5.1
