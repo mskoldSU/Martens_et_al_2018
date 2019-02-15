@@ -33,24 +33,24 @@ end_members <- read_csv("end_members.csv")
 knitr::kable(end_members)
 ```
 
-| Variable | Source   | Isotope |   value | SI\_table |
-| :------- | :------- | :------ | ------: | :-------- |
-| mean     | ICD      | d13C    |  \-26.3 | S7        |
-| s.d.     | ICD      | d13C    |     1.3 | S7        |
-| mean     | TS       | d13C    |  \-27.1 | S6        |
-| s.d.     | TS       | d13C    |     1.0 | S6        |
-| mean     | M\_Young | d13C    |  \-21.0 | S9        |
-| s.d.     | M\_Young | d13C    |     2.6 | S9        |
-| mean     | M\_old   | d13C    |  \-22.7 | S8        |
-| s.d.     | M\_old   | d13C    |     3.5 | S8        |
-| mean     | ICD      | D14C    | \-962.0 | S7        |
-| s.d.     | ICD      | D14C    |    61.0 | S7        |
-| mean     | TS       | D14C    | \-173.0 | S6        |
-| s.d.     | TS       | D14C    |   163.0 | S6        |
-| mean     | M\_Young | D14C    |  \-50.0 | S9        |
-| s.d.     | M\_Young | D14C    |    12.0 | S9        |
-| mean     | M\_old   | D14C    |  \-16.0 | S8        |
-| s.d.     | M\_old   | D14C    |    53.0 | S8        |
+| Variable | Source        | Isotope |   value | SI\_table |
+| :------- | :------------ | :------ | ------: | :-------- |
+| mean     | ICD           | d13C    |  \-26.3 | S7        |
+| s.d.     | ICD           | d13C    |     1.3 | S7        |
+| mean     | Active\_Layer | d13C    |  \-27.1 | S6        |
+| s.d.     | Active\_Layer | d13C    |     1.0 | S6        |
+| mean     | M\_Young      | d13C    |  \-21.0 | S9        |
+| s.d.     | M\_Young      | d13C    |     2.6 | S9        |
+| mean     | M\_old        | d13C    |  \-22.7 | S8        |
+| s.d.     | M\_old        | d13C    |     3.5 | S8        |
+| mean     | ICD           | D14C    | \-962.0 | S7        |
+| s.d.     | ICD           | D14C    |    61.0 | S7        |
+| mean     | Active\_Layer | D14C    | \-173.0 | S6        |
+| s.d.     | Active\_Layer | D14C    |   163.0 | S6        |
+| mean     | M\_Young      | D14C    |  \-50.0 | S9        |
+| s.d.     | M\_Young      | D14C    |    12.0 | S9        |
+| mean     | M\_old        | D14C    |  \-16.0 | S8        |
+| s.d.     | M\_old        | D14C    |    53.0 | S8        |
 
 ``` r
 # Helper functions
@@ -75,6 +75,11 @@ em_old <- filter(end_members, Source != "M_young")
 # Run MCMC on young part
 out_old <-  run_jags(isotopes_old, "model.jags", em_old, N, thin)
 ```
+
+    ## Warning in jags.model(file, data = jags.data, n.chains = 1, quiet = TRUE):
+    ## Adaptation incomplete
+
+    ## NOTE: Stopping adaptation
 
 ### Visualisation of results
 
