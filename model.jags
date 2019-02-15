@@ -1,0 +1,30 @@
+model {
+    t <- (age - min(age)) / (max(age) - min(age))
+    p0 ~ ddirch(c(1, 1, 1))
+    p1 ~ ddirch(c(1, 1, 1))
+    mu.13.0 <- sum(m.13*p0)
+    mu.14.0 <- sum(m.14*p0)
+    mu.13.1 <- sum(m.13*p1)
+    mu.14.1 <- sum(m.14*p1)    
+  ## Likelihood part
+  for (i in 1:n) {
+    mu.13[i] <- mu.13.0 * (1-t[i]) + mu.13.1 * t[i]
+    mu.14[i] <- mu.14.0 * (1-t[i]) + mu.14.1 * t[i]
+    y.13[i] ~ dnorm(mu.13[i], tau.13)
+    y.14[i] ~ dnorm(mu.14[i], tau.14)
+    p[i, 1:3] <- p0 * (1-t[i]) + p1 * t[i]
+  }
+  ## End-member distributions
+    m.13[1] ~ dnorm(em13.m[1], 1 / em13.s[1]^2)
+    m.14.exp ~ dexp(1/34)
+    m.14[1] <- m.14.exp - 1000
+    m.13[2] ~ dnorm(em13.m[2], 1 / em13.s[2]^2)
+    m.14[2] ~ dnorm(em14.m[2], 1 / em14.s[2]^2)
+    m.13[3] ~ dnorm(em13.m[3], 1 / em13.s[3]^2)
+    m.14[3] ~ dnorm(em14.m[3], 1 / em14.s[3]^2)
+  ## Priors
+  scale.13 <- 1 / sqrt(tau.13)
+  scale.14 <- 1 / sqrt(tau.14)
+  tau.13 ~ dgamma(.05, 0.005)
+  tau.14 ~ dgamma(.05, 0.005)
+}
