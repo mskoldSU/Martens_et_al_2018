@@ -10,7 +10,7 @@ run_jags <- function(data, file, em, N, thin){
     jm <- jags.model(file,
                      data = jags.data,
                      n.chains = 1, quiet=TRUE)
-    update(jm, 10000)
+    update(jm, 50000)
     coda.samples(jm, c("p", "m.13", "m.14", "mu.13", "mu.14" , "scale.13", "scale.14"),
                  n.iter = N, thin = thin) %>% 
         as.matrix() %>% 
